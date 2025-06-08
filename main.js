@@ -186,7 +186,7 @@ console.log("--------------------------------");
 //const bool = array.every(callbackFunction(element, index, array) {
 // Điều kiện kiểm tra}, thisValue);
 
-console.log("every");
+console.log("every2");
 
 Array.prototype.every2 = function (callback, thisArg) {
   const length = this.length;
@@ -226,6 +226,37 @@ console.log(book);
 
 const lootnamber = numbers.every2((num) => num > 5);
 console.log(lootnamber);
+console.log("--------------------------------");
+
+// const bool = array.some(callbackFunction(element, index, array) {
+// Điều kiện kiểm tra}, thisValue);
+
+console.log("some2");
+Array.prototype.some2 = function (callback, thisArg) {
+  const length = this.length;
+  for (let i = 0; i < length; i++) {
+    if (i in this) {
+      if (callback.call(thisArg, this[i], i, this)) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
+// ví dụ 1 kiểm tra trong mảng xem có số lẻ k
+const bootnumber = listnumbers.some2((num) => num / 2 !== 0);
+console.log(bootnumber);
+
+// ví dụ 2 kiểm tra trong mảng có sinh viên nào trên 19 tuổi k
+
+const boolpeople = peoples.some2((people) => people.age > 18);
+console.log(boolpeople);
+
+// ví dụ 3 kiểm tra xem cửa hàng sách còn tồn khó trên 60 không
+const boolbook = books.some2((book) => book.stock > 60);
+console.log(boolbook);
+
 console.log("--------------------------------");
 
 //const result = array.reduce(callbackFunction(accumulator, currentValue, currentIndex, array) {
